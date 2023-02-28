@@ -1,0 +1,118 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(246, 232, 125);
+  }
+nav{
+    background-color:navy;
+    height: 60px;
+}
+
+.top2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height:max-content;
+}
+.logo {
+    width: 46px;
+    height: 43px;
+    position: relative;
+    left: 5px;
+}
+  
+logo img {
+    position: absolute;
+    width: 46px;
+    height: 43px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-top:-6px;
+}
+.search input {
+    position: absolute;
+    left: 89px;
+    width: 55%;
+    top: 10px;
+    height: 43px;
+    background: #e5ffd4;
+    border-radius: 20px;
+   border:none;
+}
+
+nav li{
+    float: right;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    list-style: none;
+}
+nav li.live{
+    background-color: rgb(28, 214, 174);
+    color: black;
+    border-radius: 4%;
+    margin: 4px 13px 4px 13px ;
+} 
+
+h1{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin: 40px;
+}
+.c1{
+    margin: 85px;
+    margin-left: 40px;
+    text-align: left;
+}
+li{
+    list-style: none;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 40px;
+    color: white;
+    text-align: left;
+}
+button {
+    display: inline-block;
+    background-color: black;
+    padding: 8px;
+    width: 140px;
+    color: #ffffff;
+    text-align: center;
+    font-size: 95%;
+    border-radius: 10px;
+  }
+
+.B1{
+    text-align: center;
+    height: 175px;
+    width: 85vw;
+    background-color: rgb(40, 211, 177);
+    border: 2px solid black;
+    margin: 20px 104px 15px 124px ;
+    /* padding: 34px 104px 64px 24px; */
+    border-radius: 16px;
+}
+.B2{
+    text-align: center;
+    height: 175px;
+    width: 85vw;
+    background-color: rgb(40, 211, 177);
+    border: 2px solid black;
+    margin: 50px 104px 15px 124px ;
+    border-radius: 16px;
+}
+.B3{
+    text-align: center;
+    height: 175px;
+    width: 85vw;
+    background-color: rgb(40, 211, 177);
+    border: 2px solid black;
+    margin: 50px 4px 5px 124px ;
+    border-radius: 16px;
+}
