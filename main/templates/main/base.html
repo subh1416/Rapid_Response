@@ -6,10 +6,53 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static './css/style.css' %}">
 </head>
 <body>
-    <h1>hello world</h1>
-    {% block content %}
-    {% endblock content %}
+        <nav>
+            <div class="top2">
+                <div class="logo">
+                    <img src="../image/logo.jpg" alt="/" />
+                    <h3>KITE</h3>
+                    </div>
+                    <div class="search">
+                        <input type="text" placeholder="Search Here" />
+                        
+                    </div>
+                    
+                    <li class="live">LIVE LOCATION</li>
+                </div>
+        </nav>
+        
+        <h1>EMERGENCY CONTACTS</h1>
+        <div class="container">
+            <div class="B1">
+                <li>Ambulance</li>
+                <div class="c1">
+                    <button type="button" class="b">948979749</button>
+                    <button>98768574608</button>
+                    <button>8685785877</button>
+                </div>
+            </div>
+            <div class="B2">
+                <li>Police Station</li>
+                <div class="c1">
+                    <button type="button" class="b">948979749</button>
+                    <button>98768574608</button>
+                    <button>8685785877</button>
+                </div>
+            </div>
+            <div class="B3">
+                <li>Fire Brigade</li>
+                <div class="c1">
+                    <button type="button" class="b">948979749</button>
+                    <button>98768574608</button>
+                    <button>8685785877</button>
+                </div>
+            </div>
+        </div>
+    
+    {% comment %} {% block content %}
+    {% endblock content %} {% endcomment %}
 </body>
 </html>
