@@ -9,14 +9,15 @@ if (navigator.geolocation) {
             container: "map",
             style: "mapbox://styles/mapbox/streets-v12",
             center: [lng, lat], // starting position
-            zoom: 15,
+            zoom: 17,
+            
         });
 
         // an arbitrary start will always be the same
         // only the end or destination will change
 
         const start = [lng, lat];
-        console.log(start);
+        map.addControl(new mapboxgl.NavigationControl());
 
         // create a function to make a directions request
         async function getRoute(end) {
@@ -63,6 +64,18 @@ if (navigator.geolocation) {
                 });
             }
             // add turn instructions here at the end
+              // get the sidebar and add the instructions
+        const instructions = document.getElementById('instructions');
+        const steps = data.legs[0].steps;
+
+        let tripInstructions = '';
+        for (const step of steps) {
+        tripInstructions += `<li>${step.maneuver.instruction}</li>`;
+        }
+        instructions.innerHTML = `<p><strong>Trip duration: ${Math.floor(
+        data.duration / 60
+        )} min 🚴 </strong></p><ol>${tripInstructions}</ol>`;
+        console.log(instructions.innerHTML)
         }
 
         const stores = {
@@ -90,94 +103,7 @@ if (navigator.geolocation) {
                         coordinates: [72.8746, 19.0475],
                     },
                 },
-                {
-                    type: "Feature",
-                    properties: {
-                        Name: "Central Baptist Hospital",
-                        Address: "1740 Nicholasville Rd",
-                    },
-                    geometry: {
-                        type: "Point",
-                        coordinates: [-84.512283, 38.018918],
-                    },
-                },
-                {
-                    type: "Feature",
-                    properties: {
-                        Name: "VA Medical Center -- Cooper Dr Division",
-                        Address: "1101 Veterans Dr",
-                    },
-                    geometry: {
-                        type: "Point",
-                        coordinates: [-84.506483, 38.02972],
-                    },
-                },
-                {
-                    type: "Feature",
-                    properties: {
-                        Name: "Shriners Hospital for Children",
-                        Address: "1900 Richmond Rd",
-                    },
-                    geometry: {
-                        type: "Point",
-                        coordinates: [-84.472941, 38.022564],
-                    },
-                },
-                {
-                    type: "Feature",
-                    properties: {
-                        Name: "Eastern State Hospital",
-                        Address: "627 W Fourth St",
-                    },
-                    geometry: {
-                        type: "Point",
-                        coordinates: [-84.498816, 38.060791],
-                    },
-                },
-                {
-                    type: "Feature",
-                    properties: {
-                        Name: "Cardinal Hill Rehabilitation Hospital",
-                        Address: "2050 Versailles Rd",
-                    },
-                    geometry: {
-                        type: "Point",
-                        coordinates: [-84.54212, 38.046568],
-                    },
-                },
-                {
-                    type: "Feature",
-                    properties: {
-                        Name: "St. Joseph Hospital",
-                        ADDRESS: "1 St Joseph Dr",
-                    },
-                    geometry: {
-                        type: "Point",
-                        coordinates: [-84.523636, 38.032475],
-                    },
-                },
-                {
-                    type: "Feature",
-                    properties: {
-                        Name: "UK Healthcare Good Samaritan Hospital",
-                        Address: "310 S Limestone",
-                    },
-                    geometry: {
-                        type: "Point",
-                        coordinates: [-84.501222, 38.042123],
-                    },
-                },
-                {
-                    type: "Feature",
-                    properties: {
-                        Name: "UK Medical Center",
-                        Address: "800 Rose St",
-                    },
-                    geometry: {
-                        type: "Point",
-                        coordinates: [-84.508205, 38.031254],
-                    },
-                },
+                
             ],
         };
 
@@ -293,54 +219,7 @@ if (navigator.geolocation) {
 
             });
 
-            map.on("click", (event) => {
-                const coords = Object.keys(event.lngLat).map(
-                    (key) => event.lngLat[key]
-                );
-                console.log(coords);
-                const end = {
-                    type: "FeatureCollection",
-                    features: [
-                        {
-                            type: "Feature",
-                            properties: {},
-                            geometry: {
-                                type: "Point",
-                                coordinates: coords,
-                            },
-                        },
-                    ],
-                };
-                if (map.getLayer("end")) {
-                    map.getSource("end").setData(end);
-                } else {
-                    map.addLayer({
-                        id: "end",
-                        type: "circle",
-                        source: {
-                            type: "geojson",
-                            data: {
-                                type: "FeatureCollection",
-                                features: [
-                                    {
-                                        type: "Feature",
-                                        properties: {},
-                                        geometry: {
-                                            type: "Point",
-                                            coordinates: coords,
-                                        },
-                                    },
-                                ],
-                            },
-                        },
-                        paint: {
-                            "circle-radius": 10,
-                            "circle-color": "#f30",
-                        },
-                    });
-                }
-                getRoute(coords);
-            });
+            
         });
 
 
@@ -451,7 +330,8 @@ if (navigator.geolocation) {
                 const details = listing.appendChild(
                     document.createElement("div")
                 );
-                details.innerHTML = `${store.properties.Location}`;
+                details.innerHTML = `${store.properties.Location}<br>Emergency Number - ${store.properties.Emergency_Num}<br>Telephone Number - ${store.properties.Telephone}<br> Mobile Number - ${store.properties.Mobile_Number}`;
+                
 
                 /**
                  * Listen to the element and when it is clicked, do four things:
@@ -474,6 +354,7 @@ if (navigator.geolocation) {
                     }
                     this.parentNode.classList.add("active");
                 });
+                
 
                 if (store.properties.distance) {
                     const roundedDistance =
@@ -482,6 +363,9 @@ if (navigator.geolocation) {
                 }
             }
         }
+        const abc = document.getElementById("listings")
+        createPopUp(abc[0])
+        console.log(abc)
 
         function createPopUp(currentFeature) {
             const popUps = document.getElementsByClassName("mapboxgl-popup");
@@ -492,30 +376,7 @@ if (navigator.geolocation) {
                     `<h3>${currentFeature.properties.Hospital_Name}</h3><h4>${currentFeature.properties.Location}</h4>`
                 )
                 .addTo(map);
-                map.addLayer({
-                    id: "end",
-                    type: "circle",
-                    source: {
-                        type: "geojson",
-                        data: {
-                            type: "FeatureCollection",
-                            features: [
-                                {
-                                    type: "Feature",
-                                    properties: {},
-                                    geometry: {
-                                        type: "Point",
-                                        coordinates: currentFeature.geometry.coordinates,
-                                    },
-                                },
-                            ],
-                        },
-                    },
-                    paint: {
-                        "circle-radius": 10,
-                        "circle-color": "#f30",
-                    },
-                });
+              
         }
         function flyToStore(currentFeature) {
             map.flyTo({
@@ -523,6 +384,8 @@ if (navigator.geolocation) {
                 zoom: 15,
             });
         }
+
+      
     });
 }
 

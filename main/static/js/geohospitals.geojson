@@ -65982,6 +65982,30 @@
             "geometry": {
                 "type": "Point",
                 "coordinates": [
+                    72.8746,
+                    19.0475
+                ]
+            },
+            "properties": {
+                "id": 4,
+                "Location": "Salt Pan, Mumbai city",
+                "Hospital_Name": "K.J. Somaiya Hospital and Research Centre",
+                "Address_Original_First_Line": "Hotgi Road",
+                "State": "Maharashtra",
+                "District": "Mumbai",
+                "Pincode": 400022,
+                "Telephone": 0,
+                "Mobile_Number": 0,
+                "Emergency_Num": 0,
+                "lat":19.0475,
+                "lon": 72.8746
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
                     75.9063906,
                     17.6599188
                 ]

@@ -23,10 +23,29 @@ body {
 .map {
     position: absolute;
     left: 33.3333%;
-    width: 66.6666%;
+    width: 100%;
     top: 0;
     bottom: 0;
 }
+/* #instructions {
+    position: absolute;
+    right: 0;
+    margin: 20px;
+    width: 25%;
+    top: 0;
+    bottom: 20%;
+    padding-right: 20em;
+    background-color: #fff;
+    overflow-y: scroll;
+    font-family: sans-serif;
+  } */
+#instructions {
+    position: absolute;
+    right: 0;
+    background: white;
+    top: 8px;
+    margin: 12px;
+  }
 
 h1 {
     font-size: 22px;
