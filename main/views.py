@@ -1,5 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 import json
+import os
+from . forms import UserRegisterForm
+from django.contrib import messages
 from django.http import JsonResponse
 # Create your views here.
 
@@ -41,7 +44,6 @@ def datasp(request):
 #     print(data2)
 #     return JsonResponse(jsonData2, safe=False)
 
-import os
 
 def datasn(request):
     file_path = os.path.join('main', 'static', 'abc', 'ngoss.geojson')
@@ -50,3 +52,18 @@ def datasn(request):
     jsonData2 = json.loads(data2)  # converts to a JSON structure
     
     return JsonResponse(jsonData2, safe=False)
+
+def register(request):
+    if request.method == "POST":    
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            messages.success(request, f'Hi {username}, your account has been created succesfully!')
+            return redirect('ghar')
+        
+    else:
+        form = UserRegisterForm()
+        
+    return render(request,'main/register.html',{'form': form})
+

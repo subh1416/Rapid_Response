@@ -12,6 +12,8 @@ urlpatterns = [
     path('datas',views.datas,name="datas"),
     path('datasp',views.datasp,name="datasp"),
     path('datasn',views.datasn,name="datasn"),
-    path('safety',views.safety,name="safety")
+    path('safety',views.safety,name="safety"),
+    path('register/', views.register,name="register"),
+
 
 ]
