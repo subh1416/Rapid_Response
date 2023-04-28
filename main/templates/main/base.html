@@ -1,58 +1,79 @@
-<!DOCTYPE html>
 {% load static  %}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Form</title>
     <link rel="stylesheet" href="{% static './css/style.css' %}">
+
 </head>
 <body>
-        <nav>
-            <div class="top2">
-                <div class="logo">
-                    <img src="../image/logo.jpg" alt="/" />
-                    <h3>KITE</h3>
-                    </div>
-                    <div class="search">
-                        <input type="text" placeholder="Search Here" />
-                        
-                    </div>
-                    
-                    <li class="live">LIVE LOCATION</li>
-                </div>
-        </nav>
-        
-        <h1>EMERGENCY CONTACTS</h1>
-        <div class="container">
-            <div class="B1">
-                <li>Ambulance</li>
-                <div class="c1">
-                    <button type="button" class="b">948979749</button>
-                    <button>98768574608</button>
-                    <button>8685785877</button>
-                </div>
+    <nav>
+        <div class="top2">
+            <div class="logo">
+                <h3>RR</h3>
             </div>
-            <div class="B2">
-                <li>Police Station</li>
-                <div class="c1">
-                    <button type="button" class="b">948979749</button>
-                    <button>98768574608</button>
-                    <button>8685785877</button>
-                </div>
+            <ul class="logo1">RAPID RESPONSE</ul>
+            <a class="live" href="about.html">About us</a>
+        </div>
+    </nav><hr><hr>
+    
+    <div class="search">
+        <input type="text" placeholder="Search Here"  /><i class="size fa-solid fa-magnifying-glass"></i>
+    </div>
+    <div class="container">
+        <div class="B1">
+            <li>Ambulance</li>
+            <div class="scan">
+                <a href="{% url 'map' %}">
+                <img  src="{%static './img/img.png'  %}" alt="Image not available">
+                <div ><h3>Find on Map</h3></div>
+                </a>
+            </div>           
+            <div class="c1">
+                <button type="button" class="b">102</button>
+                <button>108</button>
+                <button>9100907622</button>
             </div>
-            <div class="B3">
-                <li>Fire Brigade</li>
-                <div class="c1">
-                    <button type="button" class="b">948979749</button>
-                    <button>98768574608</button>
-                    <button>8685785877</button>
-                </div>
+            
+        </div>
+        <div class="B2">
+            <li>Police Station</li>
+            <div class="scan">
+                <a href="{% url 'map' %}">
+                    <img  src="{%static './img/img.png'  %}" alt="Image not available">
+                    <div ><h3>Find on Map</h3></div>
+                    </a>
+            </div>
+            <div class="c2">
+                <button type="button" class="b">100</button>&nbsp;&nbsp;
+                <button>109</button>&nbsp;&nbsp;
+                <button>112</button>
             </div>
         </div>
-    
-    {% comment %} {% block content %}
-    {% endblock content %} {% endcomment %}
+        <div class="B3">
+            <li>Fire Brigade</li>
+            <div class="scan">
+                <a href="{% url 'map' %}">
+                    <img  src="{%static './img/img.png'  %}" alt="Image not available">
+                    <div ><h3>Find on Map</h3></div>
+                    </a>
+            </div>          
+              <div class="c3">
+                <button type="button" class="b">101</button>&nbsp;&nbsp;
+                <button>22620111</button>&nbsp;&nbsp;
+                <button>23076111</button>
+            </div>
+        </div>
+        <script src="https://kit.fontawesome.com/0cbcf2a42f.js" crossorigin="anonymous"></script>
+        <script>
+            function Hover(){
+                windows.location.href = "https://www.scaler.com/topics/how-to-redirect-from-one-page-to-another-in-html-on-button-click/"
+            }
+        </script>
+    </div>
 </body>
 </html>
